@@ -226,7 +226,7 @@ export default class SwipeCards extends Component {
           } else {
             this.cardAnimation = Animated.decay(this.state.pan, {
               velocity: { x: velocity, y: vy },
-              deceleration: 0.98
+              deceleration: 0.98, useNativeDriver:false
             });
             this.cardAnimation.start(status => {
               if (status.finished) this._advanceState();
@@ -246,7 +246,7 @@ export default class SwipeCards extends Component {
 
   _forceLeftSwipe() {
     this.cardAnimation = Animated.timing(this.state.pan, {
-      toValue: { x: -500, y: 0 },
+      toValue: { x: -500, y: 0 }, useNativeDriver:false
     }).start(status => {
       if (status.finished) this._advanceState();
       else this._resetState();
@@ -259,7 +259,7 @@ export default class SwipeCards extends Component {
 
   _forceUpSwipe() {
     this.cardAnimation = Animated.timing(this.state.pan, {
-      toValue: { x: 0, y: 500 },
+      toValue: { x: 0, y: 500 }, useNativeDriver:false
     }).start(status => {
       if (status.finished) this._advanceState();
       else this._resetState();
@@ -272,7 +272,7 @@ export default class SwipeCards extends Component {
 
   _forceRightSwipe() {
     this.cardAnimation = Animated.timing(this.state.pan, {
-      toValue: { x: 500, y: 0 },
+      toValue: { x: 500, y: 0 },useNativeDriver:false
     }).start(status => {
       if (status.finished) this._advanceState();
       else this._resetState();
@@ -321,7 +321,7 @@ export default class SwipeCards extends Component {
   _animateEntrance() {
     Animated.spring(
       this.state.enter,
-      { toValue: 1, friction: 8 }
+      { toValue: 1, friction: 8 , useNativeDriver:false}
     ).start();
   }
 
@@ -344,7 +344,7 @@ export default class SwipeCards extends Component {
   _resetPan() {
     Animated.spring(this.state.pan, {
       toValue: { x: 0, y: 0 },
-      friction: 4
+      friction: 4, useNativeDriver:false
     }).start();
   }
 
